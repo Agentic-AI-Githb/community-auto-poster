@@ -1,0 +1,31 @@
+name: Post AI-Generated News to phpFox
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run AI agent
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          PHPFOX_CLIENT_ID: ${{ secrets.PHPFOX_CLIENT_ID }}
+          PHPFOX_CLIENT_SECRET: ${{ secrets.PHPFOX_CLIENT_SECRET }}
+          PHPFOX_URL: ${{ secrets.PHPFOX_URL }}
+          PHPFOX_USER_ID: ${{ secrets.PHPFOX_USER_ID }}
+          RSS_FEED_URL: ${{ secrets.RSS_FEED_URL }}
+        run: python agent.py
