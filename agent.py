@@ -26,8 +26,9 @@ PHPFOX_CLIENT_SECRET = os.environ.get('PHPFOX_CLIENT_SECRET')
 PHPFOX_URL = os.environ.get('PHPFOX_URL', '').rstrip('/')   # no trailing slash
 PHPFOX_USER_ID = os.environ.get('PHPFOX_USER_ID')           # must be an integer
 RSS_FEED_URL = os.environ.get(
-    'RSS_FEED_URL',
-    'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'
+   RSS_FEED_URL = os.environ.get('RSS_FEED_URL', '').strip()
+if not RSS_FEED_URL:
+    RSS_FEED_URL = 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'
 )
 
 # Validate mandatory variables
