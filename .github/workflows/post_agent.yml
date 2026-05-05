@@ -27,5 +27,4 @@ jobs:
           PHPFOX_CLIENT_SECRET: ${{ secrets.PHPFOX_CLIENT_SECRET }}
           PHPFOX_URL: ${{ secrets.PHPFOX_URL }}
           PHPFOX_USER_ID: ${{ secrets.PHPFOX_USER_ID }}
-          RSS_FEED_URL: ${{ secrets.RSS_FEED_URL }}
         run: python agent.py
