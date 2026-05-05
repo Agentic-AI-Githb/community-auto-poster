@@ -120,13 +120,12 @@ def generate_social_post(api_key: str, headline: str, link: str) -> str:
 
     # --- 2. Try each free model until one gives a post ---
     url = "https://openrouter.ai/api/v1/chat/completions"
-    prompt = (
-        "Write a short, engaging social media post about the following news headline. "
-        "The post should be catchy, under 280 characters, and suitable for a general audience. "
-        "Do not use hashtags unless necessary. Include the URL naturally if possible.\n\n"
+        prompt = (
+        "You are a tech journalist. Write a single, concise, engaging social media post (max 250 characters) in plain English about the following AI/tech headline. "
+        "Make it sound like exciting news for an AI enthusiast community. "
+        "Do NOT use emojis. Only output the final post text, nothing else.\n\n"
         f"Headline: {headline}\n"
-        f"URL: {link}\n\n"
-        "Return only the post text."
+        f"URL: {link}"
     )
 
     for model_id in free_models:
