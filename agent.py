@@ -110,7 +110,7 @@ def generate_social_post(api_key: str, headline: str, link: str) -> str:
         "Return only the post text."
     )
     payload = {
-        "model": "google/gemini-2.0-flash-lite-preview-05-10:free",
+        "model": "mistralai/mistral-7b-instruct:free",
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": 200,
         "temperature": 0.7,
